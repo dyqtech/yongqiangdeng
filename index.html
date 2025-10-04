@@ -114,7 +114,7 @@
       <img class="avatar" src="images/avatar.jpg" alt="Portrait of Yongqiang Deng" loading="lazy" />
       <div>
         <h1>Hi, I'm Yongqiang Deng</h1>
-        <p class="lead">Postdoctoral Associate at The University of Western Ontario, Canada. I work on optical fiber sensors, additive manufacturing, and the energy industry.</p>
+        <p class="lead">Postdoctoral Associate at The University of Western Ontario, Canada. I work on optical fiber sensors, additive manufacturing, and I&C for energy industry.</p>
         <p>
           <a class="btn" href="mailto:ydeng92@uwo.ca">Email</a>
           <a class="btn" href="https://scholar.google.com/citations?user=fHbXBKMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
@@ -191,7 +191,7 @@
       <div class="pub">
         <img src="images/pub2.jpg" alt="Graphical abstract for Paper 2" class="gab" loading="lazy" />
         <div>
-          <div class="title">A High Spatial Resolution Multi-Point Optical Fiber Temperature Sensor with an Interlaced Sheath-Design, Analysis, and Experimental Validation</div>
+          <div class="title">A high spatial resolution multi-point optical fiber temperature sensor with an interlaced sheath-design, analysis, and experimental validation</div>
           <div class="venue">IEEE Sensors Journal, 2024. <a href="https://ieeexplore.ieee.org/document/10759575/" target="_blank" rel="noopener noreferrer">DOI</a></div>
           <details>
             <summary>Abstract</summary>
@@ -230,7 +230,7 @@
       <div class="pub">
         <img src="images/proj2.jpg" alt="Screenshot of Project 2" class="gab" loading="lazy" />
         <div>
-          <div class="title">Multichannel Building-Integrated Photovoltaic Test System</div>
+          <div class="title">Multichannel building-integrated photovoltaic (BIPV) test system</div>
           <div class="venue">Associate Engineer Work, 2015.</div>
           <details>
             <summary>Description</summary>
@@ -261,7 +261,7 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:ydeng92@uwo.ca">ydeng92@uwo.ca</a><br/>Office: Room 329, Thompson Engineering Building, The University of Western Ontario</p>
+      <p>Email: <a href="mailto:ydeng92@uwo.ca">ydeng92@uwo.ca</a><br/>Office: Room 329, Thompson Engineering Building, The University of Western Ontario, London, Canada</p>
     </section>
   </main>
 
@@ -325,8 +325,7 @@
       });
     });
 
-    // Click a graphical abstract/screenshot to auto-open its Abstract/Description
-// and show a floating larger figure (lightbox). Second click closes.
+    // Click a graphical abstract/screenshot to open a floating larger figure (lightbox) only.
 let lightboxEl, lightboxImg;
 function ensureLightbox() {
   if (lightboxEl) return;
@@ -362,44 +361,25 @@ function hideLightbox() {
 
 function enableGabOpeners() {
   const pubs = document.querySelectorAll('.pub');
-  let uid = 0;
   pubs.forEach(pub => {
     const img = pub.querySelector('img.gab');
-    const det = pub.querySelector('details');
     if (!img) return;
-    const sum = det ? det.querySelector('summary') : null;
-    if (sum && !sum.id) sum.id = `expander-${++uid}`;
+
+    // Make the thumbnail operable
     img.setAttribute('tabindex', '0');
     img.setAttribute('role', 'button');
-    if (sum) img.setAttribute('aria-controls', sum.id);
-    img.setAttribute('aria-label', sum ? `Open ${sum.textContent.trim()} and enlarge figure` : 'Enlarge figure');
-
-    const openDetails = () => {
-      if (det) {
-        det.open = true;
-        if (sum) {
-          const top = window.scrollY + sum.getBoundingClientRect().top - headerH - 6;
-          window.scrollTo({ top, behavior: 'smooth' });
-          setTimeout(() => sum.focus && sum.focus({ preventScroll: true }), 50);
-        }
-      }
-    };
+    img.setAttribute('aria-label', 'Enlarge figure');
 
     const openLightbox = () => {
       const fullSrc = img.getAttribute('data-full') || img.currentSrc || img.src;
       showLightbox(fullSrc, img.alt);
     };
 
-    const handleActivate = () => {
-      openDetails();
-      openLightbox();
-    };
-
-    img.addEventListener('click', handleActivate);
+    img.addEventListener('click', openLightbox);
     img.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        handleActivate();
+        openLightbox();
       }
     });
 
