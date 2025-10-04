@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yongqiang Deng — Personal Website</title>
+  <meta name="description" content="Personal website of Yongqiang Deng: research, publications, teaching, CV, and contact." />
+  <meta name="color-scheme" content="light" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --fg: #0a0a0a;
+      --muted: #616161;
+      --accent: #0f62fe;
+      --link: #0a58ff;
+      --border: #e5e7eb;
+      --maxw: 980px;
+      --header-h: 64px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--fg);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      position: sticky; top: 0; backdrop-filter: saturate(120%) blur(6px);
+      background: rgba(255,255,255,0.75);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+    .nav {
+      display: flex; gap: 1rem; align-items: center; justify-content: space-between;
+      max-width: var(--maxw); margin: 0 auto; padding: .75rem 1rem;
+    }
+    .brand { font-weight: 800; letter-spacing: 0.2px; }
+    .menu { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .menu a { padding: .4rem .6rem; border-radius: 999px; color: inherit; position: relative; transition: background 0.2s ease; }
+    .menu a:hover { background: #f5f7fb; text-decoration: none; }
+    .menu a.active,
+    .menu a[aria-current="page"] { color: var(--accent); font-weight: 600; background: #eef3ff; }
+
+    section { scroll-margin-top: var(--header-h); }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 2rem 1rem 4rem; }
+    .hero { display: grid; grid-template-columns: 120px 1fr; gap: 1.25rem; align-items: center; }
+    .avatar { width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--border); object-fit: cover; }
+    h1 { font-size: clamp(1.6rem, 2.4vw + 1rem, 2.6rem); line-height: 1.2; margin: 0; }
+    h2 { font-size: 1.25rem; margin: 2.2rem 0 0.75rem; border-bottom: 1px dashed var(--border); padding-bottom: .4rem; }
+    p.lead { color: var(--muted); margin-top: .25rem; }
+
+    .cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem; }
+    .chip { display: inline-block; padding: .25rem .55rem; border: 1px solid var(--border); border-radius: 999px; font-size: .85rem; color: var(--muted); margin-right: .35rem; margin-bottom: .35rem; }
+    ul { margin: 0; padding-left: 1.2rem; }
+    li { margin: .35rem 0; }
+
+    /* Publications & Projects */
+    .pub { margin-bottom: 1.5rem; display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start; }
+    .pub img.gab { width: 120px; height: 120px; border-radius: 8px; border: 1px solid var(--border); object-fit: cover; cursor: pointer; }
+    .pub .title { font-weight: 600; }
+    .pub .venue { color: var(--muted); font-size: .95rem; }
+    @media (max-width: 720px) { .pub { grid-template-columns: 1fr; } .pub img.gab { width: 100%; height: auto; } }
+
+    /* Simple grid helper used in Research section */
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+    footer { border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; color: var(--muted); }
+    .small { font-size: .9rem; color: var(--muted); }
+    .btn { display: inline-block; padding: .55rem .8rem; border: 1px solid var(--border); border-radius: 12px; color: inherit; transition: background 0.2s ease; }
+    .btn:hover { background: #f5f7fb; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">Yongqiang Deng</div>
+      <div class="menu" role="tablist">
+        <a href="#about" role="tab">About</a>
+        <a href="#highlights" role="tab">Highlights</a>
+        <a href="#research" role="tab">Research</a>
+        <a href="#publications" role="tab">Publications</a>
+        <a href="#projects" role="tab">Projects</a>
+        <a href="#teaching" role="tab">Teaching</a>
+        <a href="#cv" role="tab">CV</a>
+        <a href="#contact" role="tab">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <img class="avatar" src="images/avatar.jpg" alt="Portrait of Yongqiang Deng" />
+      <div>
+        <h1>Hi, I'm Yongqiang Deng</h1>
+        <p class="lead">Postdoctoral Associate. I work on Optical fiber sensors, Additive manufacturing, and Energy industry.</p>
+        <p>
+          <a class="btn" href="mailto:ydeng92@uwo.ca">Email</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=fHbXBKMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn" href="#cv">CV</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="highlights">
+      <h2>Highlights</h2>
+      <div class="cards">
+        <div class="card">
+          <strong>Areas of interest</strong>
+          <div>
+            <span class="chip">Optical fiber sensor</span>
+            <span class="chip">Additive manufactruing</span>
+            <span class="chip">Small modular reactor</span>
+            <span class="chip">Energy storage</span>
+          </div>
+        </div>
+        <div class="card">
+          <strong>Current role</strong>
+          <p>Designing optical fiber sensors for Energy industry.</p>
+        </div>
+        <div class="card">
+          <strong>Open to</strong>
+          <ul>
+            <li>Academic</li>
+            <li>Industry collaborations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <p>My research focuses on advanced sensors and I&C that address critical technology gaps for monitoring and controlling existing and advanced Energy facilitis.</p>
+      <div class="grid">
+        <div class="card">
+          <strong>Topics</strong>
+          <ul>
+            <li>Optical fiber sensor</li>
+            <li>Instrumentation and Control</li>
+            <li>Structural health monitoring</li>
+            <li>Additive manufacturing</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Selected projects</strong>
+          <ul>
+            <li>Optical fiber sensor for advance reactors</li>
+            <li>Optical fiber sensor for energy storage</li>
+            <li>Additive manufacturing for advanced sensors</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="pub">
+        <img src="images/pub1.jpg" alt="Graphical abstract for Paper 1" class="gab" />
+        <div>
+          <div class="title">An in-situ multipoint optical fiber temperature sensor with applications to small modular reactors and thermal energy storage systems</div>
+          <div class="venue">Progress in Nuclear Energy, 2026. 
+            <a href="https://doi.org/10.1016/j.pnucene.2025.106044">DOI</a>
+          </div>
+          <details>
+            <summary>Abstract</summary>
+            <p>A novel multipoint optical fiber temperature sensor architecture has been proposed to address temperature measurement problems often encountered in SMRs (small modular reactors) and thermal energy storage (TES) systems. This new sensor can be submerged into working fluids to acquire reliable in-situ temperature measurements for multiple locations simultaneously. The spatial resolution of the measurement locations can be controlled by the spacing of Fiber Bragg Gratings (FBGs). This multipoint sensor utilizes interlaced conductor-insulator-conductor sheath design to provide high speed of response and reduce probe-induced thermal smearing. This sensor is particularly suited for capturing nonuniform temperature distributions during transient operations of an SMR and a TES, which thermocline needs to be accurately monitored. This paper describes the principle of the sensor design, thermal and heat transfer analysis by finite element analysis, and experimental evaluation using wax to create a phase change environment to mimic properties of molten salts often found in advanced SMRs and TES. Both numerical analysis and experimental investigation have confirmed that the proposed multipoint optical fiber sensor can achieve reliable and accurate in-situ temperature measurements in environments where traditional temperature sensors, such as thermocouples, are cumbersome to be used.</p>
+          </details>
+        </div>
+      </div>
+      <div class="pub">
+        <img src="images/pub2.jpg" alt="Graphical abstract for Paper 2" class="gab" />
+        <div>
+          <div class="title">A High Spatial Resolution Multi-Point Optical Fiber Temperature Sensor with an Interlaced Sheath-Design, Analysis, and Experimental Validation</div>
+          <div class="venue">IEEE Sensors Journal, 2024. <a href="https://ieeexplore.ieee.org/document/10759575/">DOI</a></div>
+          <details>
+            <summary>Abstract</summary>
+            <p>This article presents design, analysis, and experimental validation of a novel multipoint optical fiber sensor (OFS) probe of high spatial resolution. The probe incorporates an innovative interlaced thermal conductor-insulator-conductor (CIC) architecture to mitigate effects of thermal smearing that often occurred with the sheath in existing probes. This design ensures minimal thermal resistance between the sensor elements and the measurement environment. The design is backed by a detailed thermal analysis and computer simulation. Three prototype probes are constructed and tested in realistic environments to validate the design concept and evaluate the probe performance in transient and steady-state conditions. The results have confirmed unequivocally the unique features of this design and superior performance in achieving high spatial resolution in simultaneous measurements of localized temperatures in nonuniformly distributed thermal fields.</p>
+          </details>
+        </div>
+      </div>
+            <div class="pub">
+        <img src="images/pub3.jpg" alt="Graphical abstract for Paper 3" class="gab" />
+        <div>
+          <div class="title">Optical fiber sensors in extreme temperature and radiation environments: A review</div>
+          <div class="venue">IEEE Sensors Journal, 2022. 
+            <a href="https://ieeexplore-ieee-org.proxy1.lib.uwo.ca/abstract/document/9797227">DOI</a>
+          </div>
+          <details>
+            <summary>Abstract</summary>
+            <p>This paper presents a comprehensive review of optical fiber sensors (OFSs), including FBG, distributed optical fiber sensor and Fabry-Perot interferometer, and their applications within harsh environments, which include extremely high temperatures (from 275 °C to 1750 °C) and low temperatures (from −271.15 °C to −40 °C, namely cryogenic conditions: from 2 K to 233.15 K), and high levels of ionizing radiation. After a brief introduction of the principles of OFSs and mechanisms of interrogation, this paper focuses on the existing works for the above three operating environments. Attention have been paid to material selection for fabricating fibers, effects of doping with rare earth elements, femtosecond laser engraving, pre-processing and post-processing (i.e., annealing) that are employed to overcome issues faced byOFSs in extreme temperatures and radiation environments. Application examples and practical test cases are also presented. Through these examples, the limitations in the current state-of-the-art are acknowledged and the key problems are identified. Potential solutions to some of these problems are also elucidated. A feature of this paper is the amalgamation of many research methodologies and outcomes in three seemingly distinct environmental conditions in one place so that different solution techniques can be integrated to advance OFS technologies, especially for extreme environment applications.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="pub">
+        <img src="images/proj1.jpg" alt="Screenshot of Project 1" class="gab" />
+        <div>
+          <div class="title">Project One</div>
+          <div class="venue">Multi-MW Converter Control Platform, 2024. <a href="#">Details</a></div>
+          <details>
+            <summary>Description</summary>
+            <p>Developed a digital twin and real-time HIL framework for EMI-aware converter models.</p>
+          </details>
+        </div>
+      </div>
+      <div class="pub">
+        <img src="images/proj2.jpg" alt="Screenshot of Project 2" class="gab" />
+        <div>
+          <div class="title">Project Two</div>
+          <div class="venue">Hybrid PV-Battery Microgrid Demo, 2023. <a href="#">Details</a></div>
+          <details>
+            <summary>Description</summary>
+            <p>A demonstration microgrid with adaptive MPPT and storage coordination, deployed in a testbed.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <ul>
+        <li>EE 4XX — Power Electronics (Fall 2024) — <a href="#">Syllabus</a></li>
+        <li>EE 5XX — Distributed Energy Systems (Spring 2025) — <a href="#">Syllabus</a></li>
+      </ul>
+    </section>
+
+    <section id="cv">
+      <h2>Curriculum Vitae</h2>
+      <p>
+        <a class="btn" href="cv.pdf" download>Download CV</a>
+        <a class="btn" href="cv.pdf" target="_blank" rel="noopener">Open in new tab</a>
+      </p>
+      <object data="cv.pdf" type="application/pdf" width="100%" height="640" aria-label="Inline CV preview">
+        <p>Your browser can't display PDFs. You can <a href="cv.pdf" target="_blank" rel="noopener">open the CV in a new tab</a> or <a href="cv.pdf" download>download it</a>.</p>
+      </object>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:ydeng92@uwo.ca">ydeng92@uwo.ca</a><br/>Office: Room 123, Building, University / Company</p>
+    </section>
+  </main>
+
+  <footer class="small">
+    <div>© <span id="year"></span> Yongqiang Deng. Built with a single HTML file. <span style="opacity:.6">Last updated <time id="updated"></time>.</span></div>
+  </footer>
+
+  <script>
+    // Year + Last updated
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const d = new Date(document.lastModified);
+    document.getElementById('updated').textContent = d.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'});
+
+    // Scrollspy with smooth highlight ("next just under header" rule)
+    const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64;
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const links = Array.from(document.querySelectorAll('.menu a[href^="#"]'));
+
+    function setActive(id) {
+      links.forEach(a => {
+        const match = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('active', match);
+        a.setAttribute('aria-current', match ? 'page' : 'false');
+      });
+    }
+
+    function computeActiveIdFromTops(tops, ids, headerPx, epsPx) {
+      let nextIndex = tops.findIndex(top => top >= headerPx - 1);
+      if (nextIndex === -1) return ids[ids.length - 1] || null;
+      const nextTop = tops[nextIndex];
+      if (nextTop <= headerPx + epsPx) return ids[nextIndex];
+      return ids[Math.max(0, nextIndex - 1)];
+    }
+
+    function featherActiveId() {
+      const EPS = 4;
+      const tops = sections.map(s => s.getBoundingClientRect().top);
+      const ids = sections.map(s => s.id);
+      return computeActiveIdFromTops(tops, ids, headerH, EPS);
+    }
+
+    function updateActive() {
+      const id = featherActiveId();
+      if (id) setActive(id);
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive);
+    window.addEventListener('load', updateActive);
+    document.addEventListener('DOMContentLoaded', updateActive);
+
+    // Smooth scroll behavior with highlight sync
+    links.forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          window.scrollTo({ top: target.offsetTop - headerH + 1, behavior: 'smooth' });
+          setActive(target.id);
+        }
+      });
+    });
+
+    // Click a graphical abstract/screenshot to auto-open its Abstract/Description (no toggle, always open)
+    function enableGabOpeners() {
+      const pubs = document.querySelectorAll('.pub');
+      let uid = 0;
+      pubs.forEach(pub => {
+        const img = pub.querySelector('img.gab');
+        const det = pub.querySelector('details');
+        if (!img || !det) return;
+        const sum = det.querySelector('summary');
+        if (sum && !sum.id) sum.id = `expander-${++uid}`;
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('role', 'button');
+        if (sum) img.setAttribute('aria-controls', sum.id);
+        img.setAttribute('aria-label', sum ? `Open ${sum.textContent.trim()}` : 'Open details');
+
+        const openDetails = () => {
+          det.open = true;
+          if (sum) {
+            const top = window.scrollY + sum.getBoundingClientRect().top - headerH - 6;
+            window.scrollTo({ top, behavior: 'smooth' });
+            setTimeout(() => sum.focus && sum.focus({ preventScroll: true }), 50);
+          }
+        };
+
+        img.addEventListener('click', openDetails);
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openDetails();
+          }
+        });
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', enableGabOpeners);
+    window.addEventListener('load', enableGabOpeners);
+  </script>
+</body>
+</html>
