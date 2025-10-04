@@ -77,9 +77,22 @@
     .small { font-size: .9rem; color: var(--muted); }
     .btn { display: inline-block; padding: .55rem .8rem; border: 1px solid var(--border); border-radius: 12px; color: inherit; transition: background 0.2s ease; }
     .btn:hover { background: #f5f7fb; text-decoration: none; }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html, body { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+    }
+
+    /* Lightbox (floating larger figure) */
+    .lightbox-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.72); display: none; align-items: center; justify-content: center; z-index: 1000; cursor: zoom-out; }
+    .lightbox-backdrop[aria-hidden="false"] { display: flex; }
+    .lightbox-img { max-width: min(90vw, 1100px); max-height: 90vh; border-radius: 12px; box-shadow: 0 8px 40px rgba(0,0,0,.35); border: 1px solid var(--border); background: #fff; }
+
   </style>
 </head>
 <body>
+  <a href="#about" class="visually-hidden" style="position:absolute;left:-9999px;">Skip to content</a>
   <header>
     <nav class="nav" aria-label="Primary">
       <div class="brand">Yongqiang Deng</div>
@@ -98,13 +111,13 @@
 
   <main class="container">
     <section class="hero" id="about">
-      <img class="avatar" src="images/avatar.jpg" alt="Portrait of Yongqiang Deng" />
+      <img class="avatar" src="images/avatar.jpg" alt="Portrait of Yongqiang Deng" loading="lazy" />
       <div>
         <h1>Hi, I'm Yongqiang Deng</h1>
-        <p class="lead">Postdoctoral Associate at The University of Western Ontario, Canada. I work on Optical fiber sensors, Additive manufacturing, and Energy industry.</p>
+        <p class="lead">Postdoctoral Associate at The University of Western Ontario, Canada. I work on optical fiber sensors, additive manufacturing, and the energy industry.</p>
         <p>
           <a class="btn" href="mailto:ydeng92@uwo.ca">Email</a>
-          <a class="btn" href="https://scholar.google.com/citations?user=fHbXBKMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn" href="https://scholar.google.com/citations?user=fHbXBKMAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
           <a class="btn" href="#cv">CV</a>
         </p>
       </div>
@@ -116,20 +129,20 @@
         <div class="card">
           <strong>Areas of interest</strong>
           <div>
-            <span class="chip">Optical fiber sensor</span>
-            <span class="chip">Additive manufactruing</span>
-            <span class="chip">Small modular reactor</span>
+            <span class="chip">Optical fiber sensors</span>
+            <span class="chip">Additive manufacturing</span>
+            <span class="chip">Small modular reactors</span>
             <span class="chip">Energy storage</span>
           </div>
         </div>
         <div class="card">
           <strong>Current role</strong>
-          <p>Designing optical fiber sensors for energy industry.</p>
+          <p>Designing optical fiber sensors for the energy industry.</p>
         </div>
         <div class="card">
           <strong>Open to</strong>
           <ul>
-            <li>Academic</li>
+            <li>Academic positions</li>
             <li>Industry collaborations</li>
           </ul>
         </div>
@@ -138,12 +151,12 @@
 
     <section id="research">
       <h2>Research</h2>
-      <p>My research focuses on advanced sensors and I&C that address critical technology gaps for monitoring and controlling existing and advanced energy facilitis.</p>
+      <p>My research focuses on advanced sensors and I&amp;C that address critical technology gaps for monitoring and controlling existing and advanced energy facilities.</p>
       <div class="grid">
         <div class="card">
           <strong>Topics</strong>
           <ul>
-            <li>Optical fiber sensor</li>
+            <li>Optical fiber sensors</li>
             <li>Instrumentation and Control</li>
             <li>Structural health monitoring</li>
             <li>Additive manufacturing</li>
@@ -152,8 +165,8 @@
         <div class="card">
           <strong>Selected projects</strong>
           <ul>
-            <li>Optical fiber sensor for advance reactors</li>
-            <li>Optical fiber sensor for energy storage</li>
+            <li>Optical fiber sensors for advanced reactors</li>
+            <li>Optical fiber sensors for energy storage</li>
             <li>Additive manufacturing for advanced sensors</li>
           </ul>
         </div>
@@ -163,39 +176,39 @@
     <section id="publications">
       <h2>Publications</h2>
       <div class="pub">
-        <img src="images/pub1.jpg" alt="Graphical abstract for Paper 1" class="gab" />
+        <img src="images/pub1.jpg" alt="Graphical abstract for Paper 1" class="gab" loading="lazy" />
         <div>
           <div class="title">An in-situ multipoint optical fiber temperature sensor with applications to small modular reactors and thermal energy storage systems</div>
           <div class="venue">Progress in Nuclear Energy, 2026. 
-            <a href="https://doi.org/10.1016/j.pnucene.2025.106044">DOI</a>
+            <a href="https://doi.org/10.1016/j.pnucene.2025.106044" target="_blank" rel="noopener noreferrer">DOI</a>
           </div>
           <details>
             <summary>Abstract</summary>
-            <p>A novel multipoint optical fiber temperature sensor architecture has been proposed to address temperature measurement problems often encountered in SMRs (small modular reactors) and thermal energy storage (TES) systems. This new sensor can be submerged into working fluids to acquire reliable in-situ temperature measurements for multiple locations simultaneously. The spatial resolution of the measurement locations can be controlled by the spacing of Fiber Bragg Gratings (FBGs). This multipoint sensor utilizes interlaced conductor-insulator-conductor sheath design to provide high speed of response and reduce probe-induced thermal smearing. This sensor is particularly suited for capturing nonuniform temperature distributions during transient operations of an SMR and a TES, which thermocline needs to be accurately monitored. This paper describes the principle of the sensor design, thermal and heat transfer analysis by finite element analysis, and experimental evaluation using wax to create a phase change environment to mimic properties of molten salts often found in advanced SMRs and TES. Both numerical analysis and experimental investigation have confirmed that the proposed multipoint optical fiber sensor can achieve reliable and accurate in-situ temperature measurements in environments where traditional temperature sensors, such as thermocouples, are cumbersome to be used.</p>
+            <p>A novel multipoint optical fiber temperature sensor architecture has been proposed to address temperature measurement problems often encountered in SMRs (small modular reactors) and thermal energy storage (TES) systems. This new sensor can be submerged into working fluids to acquire reliable in-situ temperature measurements for multiple locations simultaneously. The spatial resolution of the measurement locations can be controlled by the spacing of Fiber Bragg Gratings (FBGs). This multipoint sensor utilizes interlaced conductor-insulator-conductor sheath design to provide high speed of response and reduce probe-induced thermal smearing. This sensor is particularly suited for capturing nonuniform temperature distributions during transient operations of an SMR and a TES, where the thermocline needs to be accurately monitored. This paper describes the principle of the sensor design, thermal and heat transfer analysis by finite element analysis, and experimental evaluation using wax to create a phase change environment to mimic properties of molten salts often found in advanced SMRs and TES. Both numerical analysis and experimental investigation have confirmed that the proposed multipoint optical fiber sensor can achieve reliable and accurate in-situ temperature measurements in environments where traditional temperature sensors, such as thermocouples, are cumbersome to be used.</p>
           </details>
         </div>
       </div>
       <div class="pub">
-        <img src="images/pub2.jpg" alt="Graphical abstract for Paper 2" class="gab" />
+        <img src="images/pub2.jpg" alt="Graphical abstract for Paper 2" class="gab" loading="lazy" />
         <div>
           <div class="title">A High Spatial Resolution Multi-Point Optical Fiber Temperature Sensor with an Interlaced Sheath-Design, Analysis, and Experimental Validation</div>
-          <div class="venue">IEEE Sensors Journal, 2024. <a href="https://ieeexplore.ieee.org/document/10759575/">DOI</a></div>
+          <div class="venue">IEEE Sensors Journal, 2024. <a href="https://ieeexplore.ieee.org/document/10759575/" target="_blank" rel="noopener noreferrer">DOI</a></div>
           <details>
             <summary>Abstract</summary>
-            <p>This article presents design, analysis, and experimental validation of a novel multipoint optical fiber sensor (OFS) probe of high spatial resolution. The probe incorporates an innovative interlaced thermal conductor-insulator-conductor (CIC) architecture to mitigate effects of thermal smearing that often occurred with the sheath in existing probes. This design ensures minimal thermal resistance between the sensor elements and the measurement environment. The design is backed by a detailed thermal analysis and computer simulation. Three prototype probes are constructed and tested in realistic environments to validate the design concept and evaluate the probe performance in transient and steady-state conditions. The results have confirmed unequivocally the unique features of this design and superior performance in achieving high spatial resolution in simultaneous measurements of localized temperatures in nonuniformly distributed thermal fields.</p>
+            <p>This article presents design, analysis, and experimental validation of a novel multipoint optical fiber sensor (OFS) probe of high spatial resolution. The probe incorporates an innovative interlaced thermal conductor-insulator-conductor (CIC) architecture to mitigate effects of thermal smearing that often occur with the sheath in existing probes. This design ensures minimal thermal resistance between the sensor elements and the measurement environment. The design is backed by a detailed thermal analysis and computer simulation. Three prototype probes are constructed and tested in realistic environments to validate the design concept and evaluate the probe performance in transient and steady-state conditions. The results confirm the unique features of this design and its superior performance in achieving high spatial resolution in simultaneous measurements of localized temperatures in nonuniformly distributed thermal fields.</p>
           </details>
         </div>
       </div>
-            <div class="pub">
-        <img src="images/pub3.jpg" alt="Graphical abstract for Paper 3" class="gab" />
+      <div class="pub">
+        <img src="images/pub3.jpg" alt="Graphical abstract for Paper 3" class="gab" loading="lazy" />
         <div>
           <div class="title">Optical fiber sensors in extreme temperature and radiation environments: A review</div>
           <div class="venue">IEEE Sensors Journal, 2022. 
-            <a href="https://ieeexplore-ieee-org.proxy1.lib.uwo.ca/abstract/document/9797227">DOI</a>
+            <a href="https://ieeexplore-ieee-org.proxy1.lib.uwo.ca/abstract/document/9797227" target="_blank" rel="noopener noreferrer">DOI</a>
           </div>
           <details>
             <summary>Abstract</summary>
-            <p>This paper presents a comprehensive review of optical fiber sensors (OFSs), including FBG, distributed optical fiber sensor and Fabry-Perot interferometer, and their applications within harsh environments, which include extremely high temperatures (from 275 °C to 1750 °C) and low temperatures (from −271.15 °C to −40 °C, namely cryogenic conditions: from 2 K to 233.15 K), and high levels of ionizing radiation. After a brief introduction of the principles of OFSs and mechanisms of interrogation, this paper focuses on the existing works for the above three operating environments. Attention have been paid to material selection for fabricating fibers, effects of doping with rare earth elements, femtosecond laser engraving, pre-processing and post-processing (i.e., annealing) that are employed to overcome issues faced byOFSs in extreme temperatures and radiation environments. Application examples and practical test cases are also presented. Through these examples, the limitations in the current state-of-the-art are acknowledged and the key problems are identified. Potential solutions to some of these problems are also elucidated. A feature of this paper is the amalgamation of many research methodologies and outcomes in three seemingly distinct environmental conditions in one place so that different solution techniques can be integrated to advance OFS technologies, especially for extreme environment applications.</p>
+            <p>This paper presents a comprehensive review of optical fiber sensors (OFSs), including FBG, distributed optical fiber sensors, and Fabry–Perot interferometers, and their applications within harsh environments, which include extremely high temperatures (from 275 °C to 1750 °C) and low temperatures (from −271.15 °C to −40 °C, namely cryogenic conditions: from 2 K to 233.15 K), and high levels of ionizing radiation. After a brief introduction of the principles of OFSs and mechanisms of interrogation, this paper focuses on the existing works for the above three operating environments. Attention has been paid to material selection for fabricating fibers, effects of doping with rare earth elements, femtosecond laser engraving, preprocessing and postprocessing (i.e., annealing) that are employed to overcome issues faced by OFSs in extreme temperatures and radiation environments. Application examples and practical test cases are also presented. Through these examples, the limitations in the current state of the art are acknowledged and the key problems are identified. Potential solutions to some of these problems are also elucidated. A feature of this paper is the amalgamation of many research methodologies and outcomes in three seemingly distinct environmental conditions in one place so that different solution techniques can be integrated to advance OFS technologies, especially for extreme environment applications.</p>
           </details>
         </div>
       </div>
@@ -204,24 +217,24 @@
     <section id="projects">
       <h2>Projects</h2>
       <div class="pub">
-        <img src="images/proj1.jpg" alt="Screenshot of Project 1" class="gab" />
+        <img src="images/proj1.jpg" alt="Screenshot of Project 1" class="gab" loading="lazy" />
         <div>
-          <div class="title">Achieving curve to plane demagnifying nanolithography by Hyperlens-Superlens hybrid design</div>
-          <div class="venue">Master thesis, 2014.</div>
+          <div class="title">Achieving curve-to-plane demagnifying nanolithography by Hyperlens–Superlens hybrid design</div>
+          <div class="venue">Master's thesis, 2014.</div>
           <details>
             <summary>Description</summary>
-            <p>A plasmonic lens composed of a dielectric-filled nanoslits structure on an aluminum film is proposed and experimentally demonstrated. The slits’ structure is designed with equal distance, length, and width, but filled with variant thickness SiO2 dielectric for specific phase retardations. A dual focused ion beam instrument is employed to mill the slits and deposit SiO2 into the slits. The phase modulation by SiO2-filled slits is illustrated by a double slits interference experiment. The light focusing behavior of the fabricated plasmonic lens is experimentally characterized by a scanning near-field optical microscope. Experimental results show good agreement with the simulations.</p>
+            <p>A plasmonic lens composed of a dielectric-filled nanoslits structure on an aluminum film is proposed and experimentally demonstrated. The slits’ structure is designed with equal distance, length, and width, but filled with varying thicknesses of SiO₂ dielectric for specific phase retardations. A dual focused ion beam instrument is employed to mill the slits and deposit SiO₂ into the slits. The phase modulation by SiO₂-filled slits is illustrated by a double-slit interference experiment. The light-focusing behavior of the fabricated plasmonic lens is experimentally characterized by a scanning near-field optical microscope. Experimental results show good agreement with the simulations.</p>
           </details>
         </div>
       </div>
       <div class="pub">
-        <img src="images/proj2.jpg" alt="Screenshot of Project 2" class="gab" />
+        <img src="images/proj2.jpg" alt="Screenshot of Project 2" class="gab" loading="lazy" />
         <div>
-          <div class="title">Multichanel Building Integrated Photovoltaic Test System</div>
+          <div class="title">Multichannel Building-Integrated Photovoltaic Test System</div>
           <div class="venue">Associate Engineer Work, 2015.</div>
           <details>
             <summary>Description</summary>
-            <p>The test system is built for monitoring ten temperatures from the front and back of the solar panel, the test system can also monitor the outputs of the solar panel.</p>
+            <p>The test system monitors ten temperatures from the front and back of a solar panel and also logs the electrical outputs of the panel.</p>
           </details>
         </div>
       </div>
@@ -230,8 +243,8 @@
     <section id="teaching">
       <h2>Teaching</h2>
       <ul>
-        <li>ECE 4439B — Conventional, Renewable, and Nuclear Energy (TA Winter 2019-2021, The University of Western Ontario) </li>
-        <li>MSE 2202 — Introduction to Mechatronic Design (TA Winter 2019, The University of Western Ontario) </li>
+        <li>ECE 4439B — Conventional, Renewable, and Nuclear Energy (TA Winter 2019–2021, The University of Western Ontario)</li>
+        <li>MSE 2202 — Introduction to Mechatronic Design (TA Winter 2019, The University of Western Ontario)</li>
       </ul>
     </section>
 
@@ -239,10 +252,10 @@
       <h2>Curriculum Vitae</h2>
       <p>
         <a class="btn" href="docs/CVYQD.pdf" download>Download CV</a>
-        <a class="btn" href="docs/CVYQD.pdf" target="_blank" rel="noopener">Open in new tab</a>
+        <a class="btn" href="docs/CVYQD.pdf" target="_blank" rel="noopener noreferrer">Open in new tab</a>
       </p>
       <object data="docs/CVYQD.pdf" type="application/pdf" width="100%" height="640" aria-label="Inline CV preview">
-        <p>If your browser can't display PDFs. You can <a href="docs/CVYQD.pdf" target="_blank" rel="noopener">open the CV in a new tab</a> or <a href="docs/CVYQD.pdf" download>download it</a>.</p>
+        <p>If your browser can't display PDFs, you can <a href="docs/CVYQD.pdf" target="_blank" rel="noopener noreferrer">open the CV in a new tab</a> or <a href="docs/CVYQD.pdf" download>download it</a>.</p>
       </object>
     </section>
 
@@ -262,16 +275,16 @@
     const d = new Date(document.lastModified);
     document.getElementById('updated').textContent = d.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'});
 
-    // Scrollspy with smooth highlight ("next just under header" rule)
+    // Scrollspy with "next just under header" rule
     const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64;
     const sections = Array.from(document.querySelectorAll('section[id]'));
     const links = Array.from(document.querySelectorAll('.menu a[href^="#"]'));
 
     function setActive(id) {
       links.forEach(a => {
-        const match = a.getAttribute('href') === '#' + id;
-        a.classList.toggle('active', match);
-        a.setAttribute('aria-current', match ? 'page' : 'false');
+        const isMatch = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('active', isMatch);
+        a.setAttribute('aria-current', isMatch ? 'page' : 'false');
       });
     }
 
@@ -312,42 +325,91 @@
       });
     });
 
-    // Click a graphical abstract/screenshot to auto-open its Abstract/Description (no toggle, always open)
-    function enableGabOpeners() {
-      const pubs = document.querySelectorAll('.pub');
-      let uid = 0;
-      pubs.forEach(pub => {
-        const img = pub.querySelector('img.gab');
-        const det = pub.querySelector('details');
-        if (!img || !det) return;
-        const sum = det.querySelector('summary');
-        if (sum && !sum.id) sum.id = `expander-${++uid}`;
-        img.setAttribute('tabindex', '0');
-        img.setAttribute('role', 'button');
-        if (sum) img.setAttribute('aria-controls', sum.id);
-        img.setAttribute('aria-label', sum ? `Open ${sum.textContent.trim()}` : 'Open details');
+    // Click a graphical abstract/screenshot to auto-open its Abstract/Description
+// and show a floating larger figure (lightbox). Second click closes.
+let lightboxEl, lightboxImg;
+function ensureLightbox() {
+  if (lightboxEl) return;
+  lightboxEl = document.createElement('div');
+  lightboxEl.className = 'lightbox-backdrop';
+  lightboxEl.setAttribute('role', 'dialog');
+  lightboxEl.setAttribute('aria-modal', 'true');
+  lightboxEl.setAttribute('aria-hidden', 'true');
+  lightboxImg = document.createElement('img');
+  lightboxImg.className = 'lightbox-img';
+  lightboxImg.alt = '';
+  lightboxEl.appendChild(lightboxImg);
+  document.body.appendChild(lightboxEl);
+  // Close on backdrop click
+  lightboxEl.addEventListener('click', () => hideLightbox());
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxEl.getAttribute('aria-hidden') === 'false') hideLightbox();
+  });
+}
+function showLightbox(src, alt) {
+  ensureLightbox();
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightboxEl.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function hideLightbox() {
+  if (!lightboxEl) return;
+  lightboxEl.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
 
-        const openDetails = () => {
-          det.open = true;
-          if (sum) {
-            const top = window.scrollY + sum.getBoundingClientRect().top - headerH - 6;
-            window.scrollTo({ top, behavior: 'smooth' });
-            setTimeout(() => sum.focus && sum.focus({ preventScroll: true }), 50);
-          }
-        };
+function enableGabOpeners() {
+  const pubs = document.querySelectorAll('.pub');
+  let uid = 0;
+  pubs.forEach(pub => {
+    const img = pub.querySelector('img.gab');
+    const det = pub.querySelector('details');
+    if (!img) return;
+    const sum = det ? det.querySelector('summary') : null;
+    if (sum && !sum.id) sum.id = `expander-${++uid}`;
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    if (sum) img.setAttribute('aria-controls', sum.id);
+    img.setAttribute('aria-label', sum ? `Open ${sum.textContent.trim()} and enlarge figure` : 'Enlarge figure');
 
-        img.addEventListener('click', openDetails);
-        img.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openDetails();
-          }
-        });
-      });
-    }
+    const openDetails = () => {
+      if (det) {
+        det.open = true;
+        if (sum) {
+          const top = window.scrollY + sum.getBoundingClientRect().top - headerH - 6;
+          window.scrollTo({ top, behavior: 'smooth' });
+          setTimeout(() => sum.focus && sum.focus({ preventScroll: true }), 50);
+        }
+      }
+    };
 
-    window.addEventListener('DOMContentLoaded', enableGabOpeners);
-    window.addEventListener('load', enableGabOpeners);
+    const openLightbox = () => {
+      const fullSrc = img.getAttribute('data-full') || img.currentSrc || img.src;
+      showLightbox(fullSrc, img.alt);
+    };
+
+    const handleActivate = () => {
+      openDetails();
+      openLightbox();
+    };
+
+    img.addEventListener('click', handleActivate);
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleActivate();
+      }
+    });
+
+    // Hide broken thumbnails gracefully
+    img.addEventListener('error', () => { img.style.display = 'none'; });
+  });
+}
+
+window.addEventListener('DOMContentLoaded', enableGabOpeners);
+window.addEventListener('load', enableGabOpeners);
   </script>
 </body>
 </html>
